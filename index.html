@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Randomizer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
+
 <body>
-    
+    <div class="container-fluid"><h1>Meal & Cocktail Randomizer Generator</h1></div>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <div class="control">
+                    <input class="input" type="text" placeholder="Ingredient preferred">
+                </div>
+                <div class="control">
+                    <button class="button is-primary">Submit</button>
+                </div>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Liquor preferred">
+                </div>
+                <div class="control">
+                    <button class="button is-primary">Submit</button>
+                </div>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title">Meal</p>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title">Cocktail</p>
+                <div class="content">
+                </div>
+            </article>
+        </div>
+    </div>
+
 </body>
+
 </html>
