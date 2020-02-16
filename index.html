@@ -20,21 +20,19 @@
 
     <div class="tile is-ancestor">
         <div class="tile is-parent">
-            <article class="tile is-child box">
+            <article class="tile is-child box has-background-light">
                 <div class="control">
-                    <input class="input" type="text" placeholder="Ingredient preferred">
+                    <input id="meal-input" class="input" type="text" placeholder="Ingredient preferred">
                 </div>
                 <div class="control">
-                    <button class="button is-primary">Submit</button>
+                    <input id="liquor-input" class="input" type="text" placeholder="Liquor preferred">
                 </div>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Liquor preferred">
-                </div>
-                <div class="control">
-                    <button class="button is-primary">Submit</button>
-                </div>
+                <hr class="has-background-primary">
+                <div class="control buttons is-centered">
+                    <button id="submit-btn"class="button is-primary">Submit</button>
+                </div>       
             </article>
-        </div>
+        </div>   
         <div class="tile is-parent">
             <article class="tile is-child box">
                 <p class="title">Meal</p>
@@ -54,7 +52,6 @@
             </article>
         </div>
     </div>
-
 </body>
 
 </html>
