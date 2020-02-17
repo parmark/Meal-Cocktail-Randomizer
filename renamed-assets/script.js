@@ -18,9 +18,9 @@ function generateMeal() {
         var containerDiv = $("<div class='container'>");
         $("#mealContent").append(containerDiv);
 
-        var titleDiv = $("<div class='title'>");
-        $(titleDiv).text(mealTitle);
-        $(containerDiv).append(titleDiv);
+        // var titleDiv = $("<div class='title'>");
+        $("#mealTitle").text(mealTitle);
+        // $(containerDiv).append(titleDiv);
     });
 };
 
@@ -42,9 +42,9 @@ function generateCocktail() {
         var containerDiv = $("<div class='container'>");
         $("#cocktailContent").append(containerDiv);
 
-        var titleDiv = $("<div class='title'>");
-        $(titleDiv).text(drinkTitle);
-        $(containerDiv).append(titleDiv);
+        // var titleDiv = $("<div class='title'>");
+        $("#cocktailTitle").text(drinkTitle);
+        // $(containerDiv).append(titleDiv);
 
        //we should hard code the container and title divs in the html so that it doesn't keep creating new ones each time, so the user doesn't have to refresh the page.
     });
