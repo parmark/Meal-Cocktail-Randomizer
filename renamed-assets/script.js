@@ -1,10 +1,10 @@
-var userIngredient = "chicken breast";
-var ingredient = userIngredient.replace(" ", "_");
-var mealQueryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ingredient;
+
 
 // Meal Generator Code:
 function generateMeal() {
-
+    var userIngredient = $("#userIngredient").val();
+    var ingredient = userIngredient.replace(" ", "_");
+    var mealQueryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ingredient;
     $.ajax({
     url: mealQueryUrl,
     method: "GET"   
@@ -24,11 +24,12 @@ function generateMeal() {
     });
 };
 
-var userLiquor = "bourbon";
-var liquor = userLiquor.replace(" ", "_");
-var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + liquor;
+
 
 function generateCocktail() {
+    var userLiquor = $("#userLiquor").val();
+    var liquor = userLiquor.replace(" ", "_");
+    var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + liquor;
     $.ajax({
         url: drinkQueryUrl,
         method: "GET"
