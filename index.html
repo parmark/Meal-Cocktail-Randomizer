@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,7 @@
                     <input class="input" type="text" placeholder="Ingredient preferred">
                 </div>
                 <div class="control">
-                    <button class="button is-primary">Submit</button>
+                    <button id="btnSubmit" class="button is-primary">Submit</button>
                 </div>
                 <div class="control">
                     <input class="input" type="text" placeholder="Liquor preferred">
@@ -39,7 +40,7 @@
         <div class="tile is-parent">
             <article class="tile is-child box">
                 <p class="title">Meal</p>
-                <div class="content">
+                <div class="content" id="mealContent">
                     <button class="button is-primary">Save this meal</button><br><br>
                     <button class="button is-primary">Randomize again</button>
                 </div>
@@ -48,14 +49,16 @@
         <div class="tile is-parent">
             <article class="tile is-child box">
                 <p class="title">Cocktail</p>
-                <div class="content">
+                <div class="content" id="cocktailContent">
                     <button class="button is-primary">Save this cocktail</button><br><br>
                     <button class="button is-primary">Randomize again</button>
                 </div>
             </article>
         </div>
     </div>
-
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="renamed-assets/script.js"></script>
 </body>
 
 </html>
