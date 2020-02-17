@@ -24,10 +24,11 @@
         <div class="tile is-parent">
             <article class="tile is-child box has-background-light">
                 <div class="control level">
-                    <input class="input" type="text" placeholder="Ingredient preferred">
+                    <input class="input" type="text" placeholder="Ingredient preferred" id="userIngredient">
+
                 </div>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Liquor preferred">
+                    <input class="input" type="text" placeholder="Liquor preferred" id="userLiquor">
                 </div>
                 <hr class="has-background-primary">
                 <div class="control">
@@ -37,19 +38,15 @@
         </div>
         <div class="tile is-parent">
             <article class="tile is-child box">
-                <p class="meal-title"></p>
+                <p class="title" id="mealTitle">Meal</p>
                 <div class="content" id="mealContent">
-                    <button class="button is-primary">Save this meal</button><br><br>
-                    <button class="button is-primary">Randomize again</button>
                 </div>
             </article>
         </div>
         <div class="tile is-parent">
             <article class="tile is-child box">
-                <p class="title" id="cocktail-title"></p>
+                <p class="title" id="cocktailTitle">Cocktail</p>
                 <div class="content" id="cocktailContent">
-                    <button class="button is-primary">Save this cocktail</button><br><br>
-                    <button class="button is-primary">Randomize again</button>
                 </div>
             </article>
         </div>
