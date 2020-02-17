@@ -15,8 +15,7 @@ function generateMeal() {
         var randomMeal = mealsArray[Math.floor(Math.random() * mealsArray.length)];
         var mealTitle = randomMeal.strMeal;
 
-        var containerDiv = $("<div class='container'>");
-        $("#mealContent").append(containerDiv);
+        $("#mealContent").append("<img class='image is-100x100' src='"+ randomMeal.strMealThumb +"'>");
 
         // var titleDiv = $("<div class='title'>");
         $("#mealTitle").text(mealTitle);
@@ -39,8 +38,7 @@ function generateCocktail() {
         var randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
         var drinkTitle = randomDrink.strDrink;
 
-        var containerDiv = $("<div class='container'>");
-        $("#cocktailContent").append(containerDiv);
+        $("#cocktailContent").append($("<img class='image is-100x100' src='"+ randomDrink.strDrinkThumb +"'>"));
 
         // var titleDiv = $("<div class='title'>");
         $("#cocktailTitle").text(drinkTitle);
@@ -50,7 +48,7 @@ function generateCocktail() {
     });
 }
 
-
+// strMealThumb
 
 $("#btnSubmit").on("click", function(event){ 
     event.preventDefault();
