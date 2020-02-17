@@ -1,10 +1,10 @@
-var userIngredient = "chicken breast";
-var ingredient = userIngredient.replace(" ", "_");
-var mealQueryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ingredient;
+
 
 // Meal Generator Code:
 function generateMeal() {
-
+    var userIngredient = $("#userIngredient").val();
+    var ingredient = userIngredient.replace(" ", "_");
+    var mealQueryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ingredient;
     $.ajax({
     url: mealQueryUrl,
     method: "GET"   
@@ -18,17 +18,18 @@ function generateMeal() {
         var containerDiv = $("<div class='container'>");
         $("#mealContent").append(containerDiv);
 
-        var titleDiv = $("<div class='title'>");
-        $(titleDiv).text(mealTitle);
-        $(containerDiv).append(titleDiv);
+        // var titleDiv = $("<div class='title'>");
+        $("#mealTitle").text(mealTitle);
+        // $(containerDiv).append(titleDiv);
     });
 };
 
-var userLiquor = "bourbon";
-var liquor = userLiquor.replace(" ", "_");
-var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + liquor;
+
 
 function generateCocktail() {
+    var userLiquor = $("#userLiquor").val();
+    var liquor = userLiquor.replace(" ", "_");
+    var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + liquor;
     $.ajax({
         url: drinkQueryUrl,
         method: "GET"
@@ -41,9 +42,9 @@ function generateCocktail() {
         var containerDiv = $("<div class='container'>");
         $("#cocktailContent").append(containerDiv);
 
-        var titleDiv = $("<div class='title'>");
-        $(titleDiv).text(drinkTitle);
-        $(containerDiv).append(titleDiv);
+        // var titleDiv = $("<div class='title'>");
+        $("#cocktailTitle").text(drinkTitle);
+        // $(containerDiv).append(titleDiv);
 
        //we should hard code the container and title divs in the html so that it doesn't keep creating new ones each time, so the user doesn't have to refresh the page.
     });
