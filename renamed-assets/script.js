@@ -50,8 +50,6 @@ function generateCocktail() {
     });
 }
 
-// strMealThumb
-
 $("#btnSubmit").on("click", function(event){ 
     event.preventDefault();
     generateMeal();
