@@ -15,8 +15,8 @@ function generateMeal() {
         var randomMeal = mealsArray[Math.floor(Math.random() * mealsArray.length)];
         var mealTitle = randomMeal.strMeal;
 
-        var containerDiv = $("<div class='container'>");
-        $("#mealContent").append(containerDiv);
+        $("#mealContent").empty();
+        $("#mealContent").append("<img class='image is-100x100' src='"+ randomMeal.strMealThumb +"'>");
 
         // var titleDiv = $("<div class='title'>");
         $("#mealTitle").text(mealTitle);
@@ -39,8 +39,8 @@ function generateCocktail() {
         var randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
         var drinkTitle = randomDrink.strDrink;
 
-        var containerDiv = $("<div class='container'>");
-        $("#cocktailContent").append(containerDiv);
+        $("#cocktailContent").empty();
+        $("#cocktailContent").append($("<img class='image is-100x100' src='"+ randomDrink.strDrinkThumb +"'>"));
 
         // var titleDiv = $("<div class='title'>");
         $("#cocktailTitle").text(drinkTitle);
@@ -49,8 +49,6 @@ function generateCocktail() {
        //we should hard code the container and title divs in the html so that it doesn't keep creating new ones each time, so the user doesn't have to refresh the page.
     });
 }
-
-
 
 $("#btnSubmit").on("click", function(event){ 
     event.preventDefault();
