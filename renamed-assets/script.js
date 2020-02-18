@@ -68,8 +68,25 @@ function getCocktailDetails(a) {
         // console.log(response)
         for (var prop in response.drinks[0]){
             // console.log(response.drinks[0][prop])
-            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response.drinks[0][prop] !== null) {
+            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response.drinks[0][prop] !== null && response.meals[0][prop] !== "") {
             console.log(prop, ":", response.drinks[0][prop]);
+            };
+        };
+    });
+};
+
+// getMealDetails("52772")
+function getMealDetails(a) {
+    var Url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + a;
+    $.ajax({
+        url: Url,
+        method: "GET"
+    }).then(function(response){
+        console.log(response.meals[0])
+        for (var prop in response.meals[0]){
+            // console.log(prop)
+            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response.meals[0][prop] !== null && response.meals[0][prop] !== "") {
+            console.log(prop, ":", response.meals[0][prop]);
             };
         };
     });
