@@ -17,7 +17,7 @@ function generateMeal() {
         mealTitle = randomMeal.strMeal;
 
         $("#mealContent").empty();
-        $("#mealContent").append("<img class='image is-100x100' src='"+ randomMeal.strMealThumb +"'>");
+        $("#mealContent").append("<img class='is-100x100' src='"+ randomMeal.strMealThumb +"'>");
 
         // var titleDiv = $("<div class='title'>");
         $("#mealTitle").text(mealTitle);
@@ -66,7 +66,6 @@ function generateCocktail() {
         url: drinkQueryUrl,
         method: "GET"
     }).then(function(response) {
-
         drinksArray = response.drinks;
         var randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
         drinkTitle = randomDrink.strDrink;
@@ -79,6 +78,37 @@ function generateCocktail() {
         // $(containerDiv).append(titleDiv);
     });
 }
+// getCocktailDetails("11007");
+function getCocktailDetails(a) {
+    var Url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + a;
+    $.ajax({
+        url: Url,
+        method: "GET"
+    }).then(function(response){
+        // console.log(response)
+        for (var prop in response.drinks[0]){
+            // console.log(response.drinks[0][prop])
+            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response.drinks[0][prop] !== null) {
+            console.log(prop, ":", response.drinks[0][prop]);
+            };
+        };
+    });
+};
+
+function generateRandomCocktail() {
+    var queryUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+    
+    $.ajax({
+        url: queryUrl,
+        method: "GET"   
+    
+        }).then(function(response) {
+            var drinkTitle = response.drinks[0].strDrink;
+            $("#cocktailTitle").text(drinkTitle);
+            $("#cocktailContent").empty();
+            $("#cocktailContent").append("<img class='image is-100x100' src='"+ response.drinks[0].strDrinkThumb +"' alt='" + response.drinks[0].strDrink + "'>");
+    });
+};
 
 $("#btnSubmit").on("click", function(event){ 
     event.preventDefault();
@@ -110,4 +140,36 @@ $("#btnDrinkSave").on("click", function (event){        // this button ID needs 
 
     $("#savedCocktail").text(drinkTitle);
     $("#cocktailRecipe").text("recipe list placeholder");
+});
+
+
+// Listeners for radio buttons
+$(document).on("click", ".mealSearchParams", function() {
+    $(".mealSearchParams").removeClass("is-active")
+    $(this).addClass("is-active")
+
+    console.log($(this).text())
+    console.log("Category")
+    if($(this).text().trim() === "Category") {
+        console.log("KJHBH")
+        $("#userIngredient").attr("placeholder", "e.g., Seafood");
+    }
+    else if($(this).text().trim() === "Area") {
+        $("#userIngredient").attr("placeholder", "e.g., Canadian");
+    }
+    else if($(this).text().trim() === "Ingredient") {
+        $("#userIngredient").attr("placeholder", "e.g., Chicken Breast");
+    }
+});
+
+$(document).on("click", ".cocktailSearchParams", function() {
+    $(".cocktailSearchParams").removeClass("is-active")
+    $(this).addClass("is-active")
+
+    if($(this).text().trim() === "Category") {
+        $("#userLiquor").attr("placeholder", "e.g., Cocktail");
+    }
+    else if($(this).text().trim() === "Ingredient") {
+        $("#userLiquor").attr("placeholder", "e.g., Gin");
+    }
 });
