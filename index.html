@@ -13,20 +13,51 @@
 <body>
 
     <div class="container-fluid">
-        <div class="row">
-            <h1 class="col is-size-1 has-text-centered">Meal & Liquor Randomizer</h1>
+        <div class="hero is-bold is-primary">
+            <h1 class="is-size-1 has-text-centered"> 
+                <i class="fas fa-utensils"></i>
+                Meal & Liquor Randomizer
+                <i class="fa fa-cocktail"></i>
+            </h1>
+            <p class="subtitle is-size-3 has-text-centered">
+                Over 4 goriilion recipes
+            </p>
+            <br>
         </div>
     </div>
 
-    <hr class="has-background-primary">
+    <br>
 
     <div class="tile is-ancestor">
         <div class="tile is-vertical is-4">
             <div class="tile">
                 <div class="tile is-parent is-vertical">
                     <article class="tile is-child box has-background-light">
+                        <div class="tabs is-toggle is-toggle-rounded">
+                            <ul>
+                                <li id="mealCatTab" class="mealSearchParams">
+                                    <a>Category</a>
+                                </li>
+                                <li id="areaTab" class="mealSearchParams">
+                                    <a>Area</a>
+                                </li>
+                                <li id="mealIngredTab" class="mealSearchParams">
+                                    <a>Ingredient</a>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="control level">
                             <input class="input" type="text" placeholder="Ingredient preferred" id="userIngredient">
+                        </div>
+                        <div class="tabs is-toggle is-toggle-rounded">
+                            <ul>
+                                <li id="catTab" class="cocktailSearchParams">
+                                    <a>Category</a>
+                                </li>
+                                <li id="ingredTab" class="cocktailSearchParams">
+                                    <a>Ingredient</a>
+                                </li>
+                            </ul>
                         </div>
                         <div class="control">
                             <input class="input" type="text" placeholder="Liquor preferred" id="userLiquor">
