@@ -46,7 +46,6 @@ function generateCocktail() {
         url: drinkQueryUrl,
         method: "GET"
     }).then(function(response) {
-
         drinksArray = response.drinks;
         var randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
         var drinkTitle = randomDrink.strDrink;
@@ -59,6 +58,22 @@ function generateCocktail() {
         // $(containerDiv).append(titleDiv);
     });
 }
+// getCocktailDetails("11007");
+function getCocktailDetails(a) {
+    var Url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + a;
+    $.ajax({
+        url: Url,
+        method: "GET"
+    }).then(function(response){
+        // console.log(response)
+        for (var prop in response.drinks[0]){
+            // console.log(response.drinks[0][prop])
+            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response.drinks[0][prop] !== null) {
+            console.log(prop, ":", response.drinks[0][prop]);
+            };
+        };
+    });
+};
 
 function generateRandomCocktail() {
     var queryUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
@@ -71,7 +86,7 @@ function generateRandomCocktail() {
             var drinkTitle = response.drinks[0].strDrink;
             $("#cocktailTitle").text(drinkTitle);
             $("#cocktailContent").empty();
-            $("#cocktailContent").append("<img class='image is-100x100' src='"+ response.drinks[0].strDrinkThumb +"'>");
+            $("#cocktailContent").append("<img class='image is-100x100' src='"+ response.drinks[0].strDrinkThumb +"' alt='" + response.drinks[0].strDrink + "'>");
     });
 };
 
