@@ -21,34 +21,51 @@
     <hr class="has-background-primary">
 
     <div class="tile is-ancestor">
-        <div class="tile is-parent">
-            <article class="tile is-child box has-background-light">
-                <div class="control level">
-                    <input class="input" type="text" placeholder="Ingredient preferred" id="userIngredient">
-
+        <div class="tile is-vertical is-4">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child box has-background-light">
+                        <div class="control level">
+                            <input class="input" type="text" placeholder="Ingredient preferred" id="userIngredient">
+                        </div>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Liquor preferred" id="userLiquor">
+                        </div>
+                        <hr class="has-background-primary">
+                        <div class="control">
+                            <button id="btnSubmit" class="button is-primary">Submit</button>
+                        </div>
+                    </article>
                 </div>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Liquor preferred" id="userLiquor">
-                </div>
-                <hr class="has-background-primary">
-                <div class="control">
-                    <button id="btnSubmit" class="button is-primary">Submit</button>
-                </div>
-            </article>
+            </div>
         </div>
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="title" id="mealTitle">Meal</p>
-                <div class="content" id="mealContent">
+        <div class="tile is-vertical is-4">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child box">
+                        <p class="title" id="mealTitle">Meal</p>
+                        <div class="content" id="mealContent"></div>
+                    </article>
+                    <article class="tile is-child box">
+                        <p class="title">Saved Meals</p>
+                        <div class="content"></div>
+                    </article>
                 </div>
-            </article>
+            </div>
         </div>
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="title" id="cocktailTitle">Cocktail</p>
-                <div class="content" id="cocktailContent">
+        <div class="tile is-vertical is-4">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child box">
+                        <p class="title" id="cocktailTitle">Cocktail</p>
+                        <div class="content" id="cocktailContent"></div>
+                    </article>
+                    <article class="tile is-child box">
+                        <p class="title">Saved Cocktails</p>
+                        <div class="content"></div>
+                    </article>
                 </div>
-            </article>
+            </div>
         </div>
     </div>
     
