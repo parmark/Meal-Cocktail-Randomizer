@@ -47,7 +47,7 @@ function generateRandomMeal() {
             mealTitle = response.meals[0].strMeal;
             $("#mealTitle").text(mealTitle);
             $("#mealContent").empty();
-            $("#mealContent").append("<img class='image is-100x100' src='"+ response.meals[0].strMealThumb +"'>");
+            $("#mealContent").append("<img class='is-100x100' src='"+ response.meals[0].strMealThumb +"'>");
     });
 };
 
