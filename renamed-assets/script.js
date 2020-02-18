@@ -34,7 +34,6 @@ function generateCocktail() {
         url: drinkQueryUrl,
         method: "GET"
     }).then(function(response) {
-
         drinksArray = response.drinks;
         var randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
         var drinkTitle = randomDrink.strDrink;
