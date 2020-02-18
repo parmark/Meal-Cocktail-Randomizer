@@ -58,7 +58,7 @@ function generateCocktail() {
         // $(containerDiv).append(titleDiv);
     });
 }
-// getCocktailDetails("11007");
+getCocktailDetails("11007");
 function getCocktailDetails(a) {
     var Url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + a;
     $.ajax({
@@ -68,7 +68,7 @@ function getCocktailDetails(a) {
         // console.log(response)
         for (var prop in response.drinks[0]){
             // console.log(response.drinks[0][prop])
-            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response.drinks[0][prop] !== null && response.meals[0][prop] !== "") {
+            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response.drinks[0][prop] !== null) {
             console.log(prop, ":", response.drinks[0][prop]);
             };
         };
