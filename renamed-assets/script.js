@@ -14,7 +14,7 @@ function generateMeal() {
         var mealTitle = randomMeal.strMeal;
 
         $("#mealContent").empty();
-        $("#mealContent").append("<img class='image is-100x100' src='"+ randomMeal.strMealThumb +"'>");
+        $("#mealContent").append("<img class='is-100x100' src='"+ randomMeal.strMealThumb +"'>");
 
         // var titleDiv = $("<div class='title'>");
         $("#mealTitle").text(mealTitle);
@@ -105,4 +105,36 @@ $("#btnSubmit").on("click", function(event){
         generateCocktail()
     };
 
+});
+
+
+// Listeners for radio buttons
+$(document).on("click", ".mealSearchParams", function() {
+    $(".mealSearchParams").removeClass("is-active")
+    $(this).addClass("is-active")
+
+    console.log($(this).text())
+    console.log("Category")
+    if($(this).text().trim() === "Category") {
+        console.log("KJHBH")
+        $("#userIngredient").attr("placeholder", "e.g., Seafood");
+    }
+    else if($(this).text().trim() === "Area") {
+        $("#userIngredient").attr("placeholder", "e.g., Canadian");
+    }
+    else if($(this).text().trim() === "Ingredient") {
+        $("#userIngredient").attr("placeholder", "e.g., Chicken Breast");
+    }
+});
+
+$(document).on("click", ".cocktailSearchParams", function() {
+    $(".cocktailSearchParams").removeClass("is-active")
+    $(this).addClass("is-active")
+
+    if($(this).text().trim() === "Category") {
+        $("#userLiquor").attr("placeholder", "e.g., Cocktail");
+    }
+    else if($(this).text().trim() === "Ingredient") {
+        $("#userLiquor").attr("placeholder", "e.g., Gin");
+    }
 });
