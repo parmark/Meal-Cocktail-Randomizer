@@ -1,6 +1,4 @@
 
-
-// Meal Generator Code:
 function generateMeal() {
     var userIngredient = $("#userIngredient").val();
     var ingredient = userIngredient.replace(" ", "_");
@@ -24,7 +22,21 @@ function generateMeal() {
     });
 };
 
-
+function generateRandomMeal() {
+    var queryUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
+    
+    $.ajax({
+        url: queryUrl,
+        method: "GET"   
+    
+        }).then(function(response) {
+            console.log(response.meals.strMeal)
+            var mealTitle = response.meals.strMeal;
+            $("#mealTitle").text(mealTitle);
+            $("#mealContent").empty();
+            $("#mealContent").append("<img class='image is-100x100' src='"+ response.meals.strMealThumb +"'>");
+    });
+    };
 
 function generateCocktail() {
     var userLiquor = $("#userLiquor").val();
@@ -45,15 +57,39 @@ function generateCocktail() {
         // var titleDiv = $("<div class='title'>");
         $("#cocktailTitle").text(drinkTitle);
         // $(containerDiv).append(titleDiv);
-
-       //we should hard code the container and title divs in the html so that it doesn't keep creating new ones each time, so the user doesn't have to refresh the page.
     });
 }
 
+function generateRandomCocktail() {
+    var queryUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+    
+    $.ajax({
+        url: queryUrl,
+        method: "GET"   
+    
+        }).then(function(response) {
+            var drinkTitle = response.drinks[0].strDrink;
+            $("#cocktailTitle").text(drinkTitle);
+            $("#cocktailContent").empty();
+            $("#cocktailContent").append("<img class='image is-100x100' src='"+ response.drinks[0].strDrinkThumb +"'>");
+    });
+};
+
 $("#btnSubmit").on("click", function(event){ 
     event.preventDefault();
-    generateMeal();
-    generateCocktail();
+
+    if($("#userIngredient") === null) {         
+        generateRandomMeal();           
+    } else {
+        generateMeal()
+    };
+
+    if($("#userLiquor").text() === "") {
+        generateRandomCocktail();       
+    } else {
+        generateCocktail()
+    };
+
 });
 
 
