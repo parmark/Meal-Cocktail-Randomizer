@@ -5,7 +5,18 @@ var drinkTitle;
 function generateMeal() {
     var userIngredient = $("#userIngredient").val();
     var ingredient = userIngredient.replace(" ", "_");
-    var mealQueryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ingredient;
+
+    if ($("#mealCatTab").hasClass("is-active")) {
+        var mealQueryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + ingredient;
+    }
+    else if ($("#areaTab").hasClass("is-active")) {
+        var mealQueryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + ingredient;
+    }
+    else {
+        var mealQueryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ingredient;
+    }
+    
+
     $.ajax({
     url: mealQueryUrl,
     method: "GET"   
@@ -60,7 +71,13 @@ function generateRandomCocktail() {
 function generateCocktail() {
     var userLiquor = $("#userLiquor").val();
     var liquor = userLiquor.replace(" ", "_");
-    var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + liquor;
+
+    if ($("#catTab").hasClass("is-active")) {
+        var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + liquor;
+    }
+    else {
+        var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + liquor;
+    }
 
     $.ajax({
         url: drinkQueryUrl,
