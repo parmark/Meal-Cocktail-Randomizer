@@ -31,8 +31,38 @@ function generateMeal() {
         $("#mealContent").empty();
         $("#mealContent").append("<img class='is-100x100' src='" + randomMeal.strMealThumb + "'>");
         $("#mealTitle").text(mealTitle);
+        $("#btnMealNext").on("click", function (event) {
+            event.preventDefault();
+            mealsArray = response.meals;
+            randomMeal = mealsArray[Math.floor(Math.random() * mealsArray.length)];
+            mealTitle = randomMeal.strMeal;
+
+            $("#mealContent").empty();
+            $("#mealContent").append("<img class='is-100x100' src='" + randomMeal.strMealThumb + "'>");
+            $("#mealTitle").text(mealTitle);
+            checkMealOverflow(mealTitle.length);
+        });
+
     });
 };
+
+function checkMealOverflow(text) {
+    if (text > 18) {
+        $("#mealBox").addClass("marquee");
+    }
+    else {
+        $("#mealBox").removeClass("marquee");
+    }
+}
+
+function checkCocktailOverflow(text) {
+    if (text > 18) {
+        $("#cocktailBox").addClass("marquee");
+    }
+    else {
+        $("#cocktailBox").removeClass("marquee");
+    }
+}
 
 function generateRandomMeal() {
     var queryUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
@@ -46,7 +76,7 @@ function generateRandomMeal() {
         $("#mealTitle").text(mealTitle);
         $("#mealContent").empty();
         $("#mealContent").append("<img class='is-100x100' src='" + response.meals[0].strMealThumb + "'>");
-        mealID = response.meals[0].idMeal;
+        checkMealOverflow(mealTitle.length);
     });
 };
 
@@ -73,6 +103,19 @@ function generateCocktail() {
         $("#cocktailContent").empty();
         $("#cocktailContent").append("<img class='image is-100x100' src='" + randomDrink.strDrinkThumb + "'>");
         $("#cocktailTitle").text(drinkTitle);
+
+        $("#btnDrinkNext").on("click", function (event) {
+            event.preventDefault();
+            drinksArray = response.drinks;
+            randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
+            drinkTitle = randomDrink.strDrink;
+
+            $("#cocktailContent").empty();
+            $("#cocktailContent").append("<img class='image is-100x100' src='" + randomDrink.strDrinkThumb + "'>");
+            $("#cocktailTitle").text(drinkTitle);
+            checkCocktailOverflow(drinkTitle.length)
+        });
+
     });
 }
 // getDetails("52772", "meal");
@@ -125,6 +168,7 @@ function generateRandomCocktail() {
         $("#cocktailTitle").text(drinkTitle);
         $("#cocktailContent").empty();
         $("#cocktailContent").append("<img class='image is-100x100' src='" + response.drinks[0].strDrinkThumb + "' alt='" + response.drinks[0].strDrink + "'>");
+        checkCocktailOverflow(drinkTitle.length)
         drinkID = response.drinks[0].idDrink;
     });
 };
