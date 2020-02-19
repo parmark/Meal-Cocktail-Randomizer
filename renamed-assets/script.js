@@ -95,37 +95,41 @@ function generateCocktail() {
         // $(containerDiv).append(titleDiv);
     });
 }
-// getCocktailDetails("11007");
-function getCocktailDetails(a) {
-    var Url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + a;
+// getDetails("52772", "meal");
+// getDetails("11007", "drink");
+function getDetails(ID, type) {
+    if (type === "drink") {
+        var Url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + ID;
+    } else {
+        var Url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + ID;
+    }
     $.ajax({
         url: Url,
         method: "GET"
     }).then(function(response){
         // console.log(response)
-        for (var prop in response.drinks[0]){
+         var recipe = {};
+        var details = [];
+        var track = 0;
+        for (var prop in response[Object.keys(response)[0]][0]){
+            // console.log(Object.keys(response)[0])
             // console.log(response.drinks[0][prop])
-            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response.drinks[0][prop] !== null) {
-            console.log(prop, ":", response.drinks[0][prop]);
+            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response[Object.keys(response)[0]][0][prop] !== null && response[Object.keys(response)[0]][0][prop] !== "") {
+            // console.log(prop, ":", response.drinks[0][prop]);
+            details.push(response[Object.keys(response)[0]][0][prop]);
+            if (prop.includes("strIngredient")) {
+                track++
+            };
             };
         };
-    });
-};
-
-// getMealDetails("52772")
-function getMealDetails(a) {
-    var Url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + a;
-    $.ajax({
-        url: Url,
-        method: "GET"
-    }).then(function(response){
-        console.log(response.meals[0])
-        for (var prop in response.meals[0]){
-            // console.log(prop)
-            if (prop === "strInstructions" || (prop.includes("strIngredient") || prop.includes("strMeasure")) && response.meals[0][prop] !== null && response.meals[0][prop] !== "") {
-            console.log(prop, ":", response.meals[0][prop]);
-            };
+         recipe['instructions'] = details[0]
+        for (var i = 1; i < (track + 1); i++) {
+            var pair = "pair" + i;
+            recipe[pair] = [details[(track) + i], details[i]];
+            // console.log(recipe[pair]);
         };
+            console.log(recipe);
+        // return recipe;
     });
 };
 
