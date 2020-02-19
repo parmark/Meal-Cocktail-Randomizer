@@ -2,6 +2,8 @@ var mealTitle;
 var drinkTitle;
 var drinkID;
 var mealID;
+var mealImg;
+var drinkImg;
 
 function generateMeal() {
     var userIngredient = $("#userIngredient").val();
@@ -27,9 +29,10 @@ function generateMeal() {
         var randomMeal = mealsArray[Math.floor(Math.random() * mealsArray.length)];
         mealTitle = randomMeal.strMeal;
         mealID = randomMeal.idMeal;
+        mealImg = randomMeal.strMealThumb;
 
         $("#mealContent").empty();
-        $("#mealContent").append("<img class='is-100x100' src='" + randomMeal.strMealThumb + "'>");
+        $("#mealContent").append("<img class='is-100x100' src='" + mealImg + "'>");
         $("#mealTitle").text(mealTitle);
         $("#btnMealNext").on("click", function (event) {
             event.preventDefault();
@@ -73,9 +76,11 @@ function generateRandomMeal() {
 
     }).then(function (response) {
         mealTitle = response.meals[0].strMeal;
+        mealImg = response.meals[0].strMealThumb
         $("#mealTitle").text(mealTitle);
         $("#mealContent").empty();
-        $("#mealContent").append("<img class='is-100x100' src='" + response.meals[0].strMealThumb + "'>");
+        $("#mealContent").append("<img class='is-100x100' src='" + mealImg + "'>");
+        mealID = response.meals[0].idMeal;
         checkMealOverflow(mealTitle.length);
     });
 };
@@ -99,9 +104,10 @@ function generateCocktail() {
         var randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
         drinkTitle = randomDrink.strDrink;
         drinkID = randomDrink.idDrink;
+        drinkImg = randomDrink.strDrinkThumb
 
         $("#cocktailContent").empty();
-        $("#cocktailContent").append("<img class='image is-100x100' src='" + randomDrink.strDrinkThumb + "'>");
+        $("#cocktailContent").append("<img class='image is-100x100' src='" + drinkImg + "'>");
         $("#cocktailTitle").text(drinkTitle);
 
         $("#btnDrinkNext").on("click", function (event) {
@@ -118,9 +124,9 @@ function generateCocktail() {
 
     });
 }
-// getDetails("52772", "meal");
+
 // getDetails("11007", "drink");
-function getDetails(ID, type) {
+function getDetails(ID, type, cb) {
     if (type === "drink") {
         var Url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + ID;
     } else {
@@ -151,8 +157,9 @@ function getDetails(ID, type) {
             recipe[pair] = [details[(track) + i], details[i]];
             // console.log(recipe[pair]);
         };
-            console.log(recipe);
-        // return recipe;
+            // console.log(recipe);
+         
+        cb(recipe);
     });
 };
 
@@ -165,9 +172,10 @@ function generateRandomCocktail() {
 
     }).then(function (response) {
         drinkTitle = response.drinks[0].strDrink;
+        drinkImg = response.drinks[0].strDrinkThumb
         $("#cocktailTitle").text(drinkTitle);
         $("#cocktailContent").empty();
-        $("#cocktailContent").append("<img class='image is-100x100' src='" + response.drinks[0].strDrinkThumb + "' alt='" + response.drinks[0].strDrink + "'>");
+        $("#cocktailContent").append("<img class='image is-100x100' src='" + drinkImg + "' alt='" + response.drinks[0].strDrink + "'>");
         checkCocktailOverflow(drinkTitle.length)
         drinkID = response.drinks[0].idDrink;
     });
@@ -211,17 +219,40 @@ $("#btnSubmit").on("click", function (event) {
 
 $("#btnMealSave").on("click", function (event) {
     event.preventDefault();
+    $("#mealRecipe").empty();
+    getDetails(mealID, "meal", function(recipe){
+        for (var prop in recipe) {
+        
+            if(prop.includes("pair")) {
+                 const li = $("<li>");
+                 li.text((recipe[prop][0] + " " + recipe[prop][1]));
+                $("#mealRecipeList").append(li);
+            };
+        };
+    });
 
     $("#savedMeal").text(mealTitle);
-    $("#mealRecipe").text("reciple list placeholder");
-
+    $("#mealRecipe").append("<img class='is-100x100' src='" + mealImg + "'>");
+    $("#mealRecipe").append("<ul id='mealRecipeList'>");
 });
 
 $("#btnDrinkSave").on("click", function (event) {
     event.preventDefault();
+    $("#cocktailRecipe").empty();
+    getDetails(drinkID, "drink", function(recipe) {
+        for (var prop in recipe) {
+        
+            if(prop.includes("pair")) {
+                 const li = $("<li>");
+                 li.text((recipe[prop][0] + " " + recipe[prop][1]));
+                $("#drinkRecipeList").append(li);
+            };
+        };
+    })
 
     $("#savedCocktail").text(drinkTitle);
-    $("#cocktailRecipe").text("recipe list placeholder");
+    $("#cocktailRecipe").append("<img class='is-100x100' src='" + drinkImg + "'>");
+    $("#cocktailRecipe").append("<ul id='drinkRecipeList'>");
 });
 
 // Listeners for radio buttons
