@@ -14,14 +14,12 @@
 
     <div class="container-fluid">
         <div class="hero is-bold is-primary">
-            <h1 class="is-size-1 has-text-centered"> 
+            <h1 class="is-size-1 has-text-centered">
                 <i class="fas fa-utensils"></i>
-                Meal & Liquor Randomizer
-                <i class="fa fa-cocktail"></i>
+                Hungry&Thirsty<i class="fa fa-cocktail"></i>
             </h1>
             <p class="subtitle is-size-3 has-text-centered">
-                Over 4 goriilion recipes
-            </p>
+                Generate a random meal & cocktail to your preferences</p>
             <br>
         </div>
     </div>
@@ -64,7 +62,7 @@
                         </div>
                         <hr class="has-background-primary">
                         <div class="control">
-                            <button id="btnSubmit" class="button is-primary">Submit</button>
+                            <button id="btnSubmit" class="button is-primary"><i class="fas fa-search"></i></button>
                         </div>
                     </article>
                 </div>
@@ -74,11 +72,16 @@
             <div class="tile">
                 <div class="tile is-parent is-vertical">
                     <article class="tile is-child box">
-                        <p class="title" id="mealTitle">Meal</p>
+                        <p class="title has-text-centered" id="mealTitle">Meal</p>
+                        <div class="buttons has-addons is-centered">
+                            <button class="button is-primary"><i class="far fa-save"></i></button>
+                            <button class="button is-link"><i class="fas fa-retweet"></i></button>
+                        </div>
                         <div class="content" id="mealContent"></div>
                     </article>
                     <article class="tile is-child box">
-                        <p class="title">Saved Meals</p>
+                        <p class="title has-text-centered" id="savedMeal">Saved Meals</p>
+                        <p class="content" id="mealRecipe"></p>
                         <div class="content"></div>
                     </article>
                 </div>
@@ -88,19 +91,25 @@
             <div class="tile">
                 <div class="tile is-parent is-vertical">
                     <article class="tile is-child box">
-                        <p class="title" id="cocktailTitle">Cocktail</p>
+                        <p class="title has-text-centered" id="cocktailTitle">Cocktail</p>
+                        <div class="buttons has-addons is-centered">
+                            <button class="button is-primary"><i class="far fa-save"></i></button>
+                            <button class="button is-link"><i class="fas fa-retweet"></i></button>
+                        </div>
                         <div class="content" id="cocktailContent"></div>
                     </article>
                     <article class="tile is-child box">
-                        <p class="title">Saved Cocktails</p>
+                        <p class="title has-text-centered" id="savedCocktail">Saved Cocktails</p>
+                        <p class="content" id="cocktailRecipe"></p>
                         <div class="content"></div>
                     </article>
                 </div>
             </div>
         </div>
     </div>
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="renamed-assets/script.js"></script>
 </body>
 
