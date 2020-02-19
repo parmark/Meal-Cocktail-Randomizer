@@ -58,7 +58,7 @@ function generateCocktail() {
         // $(containerDiv).append(titleDiv);
     });
 }
-getCocktailDetails("11007");
+// getCocktailDetails("11007");
 function getCocktailDetails(a) {
     var Url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + a;
     $.ajax({
