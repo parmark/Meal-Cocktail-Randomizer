@@ -39,10 +39,29 @@ function generateMeal() {
             $("#mealContent").empty();
             $("#mealContent").append("<img class='is-100x100' src='" + randomMeal.strMealThumb + "'>");
             $("#mealTitle").text(mealTitle);
+            checkMealOverflow(mealTitle.length);
         });
 
     });
 };
+
+function checkMealOverflow(text) {
+    if (text > 18) {
+        $("#mealBox").addClass("marquee");
+    }
+    else {
+        $("#mealBox").removeClass("marquee");
+    }
+}
+
+function checkCocktailOverflow(text) {
+    if (text > 18) {
+        $("#cocktailBox").addClass("marquee");
+    }
+    else {
+        $("#cocktailBox").removeClass("marquee");
+    }
+}
 
 function generateRandomMeal() {
     var queryUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
@@ -56,6 +75,7 @@ function generateRandomMeal() {
         $("#mealTitle").text(mealTitle);
         $("#mealContent").empty();
         $("#mealContent").append("<img class='is-100x100' src='" + response.meals[0].strMealThumb + "'>");
+        checkMealOverflow(mealTitle.length);
     });
 };
 
@@ -91,6 +111,7 @@ function generateCocktail() {
             $("#cocktailContent").empty();
             $("#cocktailContent").append("<img class='image is-100x100' src='" + randomDrink.strDrinkThumb + "'>");
             $("#cocktailTitle").text(drinkTitle);
+            checkCocktailOverflow(drinkTitle.length)
         });
 
     });
@@ -141,6 +162,7 @@ function generateRandomCocktail() {
         $("#cocktailTitle").text(drinkTitle);
         $("#cocktailContent").empty();
         $("#cocktailContent").append("<img class='image is-100x100' src='" + response.drinks[0].strDrinkThumb + "' alt='" + response.drinks[0].strDrink + "'>");
+        checkCocktailOverflow(drinkTitle.length)
     });
 };
 
