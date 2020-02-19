@@ -1,6 +1,7 @@
 var mealTitle;
 var drinkTitle;
-
+var drinkID;
+var mealID;
 
 function generateMeal() {
     var userIngredient = $("#userIngredient").val();
@@ -25,22 +26,11 @@ function generateMeal() {
         mealsArray = response.meals;
         var randomMeal = mealsArray[Math.floor(Math.random() * mealsArray.length)];
         mealTitle = randomMeal.strMeal;
+        mealID = randomMeal.idMeal;
 
         $("#mealContent").empty();
         $("#mealContent").append("<img class='is-100x100' src='" + randomMeal.strMealThumb + "'>");
         $("#mealTitle").text(mealTitle);
-
-        $("#btnMealNext").on("click", function (event) {
-            event.preventDefault();
-            mealsArray = response.meals;
-            randomMeal = mealsArray[Math.floor(Math.random() * mealsArray.length)];
-            mealTitle = randomMeal.strMeal;
-
-            $("#mealContent").empty();
-            $("#mealContent").append("<img class='is-100x100' src='" + randomMeal.strMealThumb + "'>");
-            $("#mealTitle").text(mealTitle);
-        });
-
     });
 };
 
@@ -56,6 +46,7 @@ function generateRandomMeal() {
         $("#mealTitle").text(mealTitle);
         $("#mealContent").empty();
         $("#mealContent").append("<img class='is-100x100' src='" + response.meals[0].strMealThumb + "'>");
+        mealID = response.meals[0].idMeal;
     });
 };
 
@@ -77,22 +68,11 @@ function generateCocktail() {
         drinksArray = response.drinks;
         var randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
         drinkTitle = randomDrink.strDrink;
+        drinkID = randomDrink.idDrink;
 
         $("#cocktailContent").empty();
         $("#cocktailContent").append("<img class='image is-100x100' src='" + randomDrink.strDrinkThumb + "'>");
         $("#cocktailTitle").text(drinkTitle);
-
-        $("#btnDrinkNext").on("click", function (event) {
-            event.preventDefault();
-            drinksArray = response.drinks;
-            randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
-            drinkTitle = randomDrink.strDrink;
-
-            $("#cocktailContent").empty();
-            $("#cocktailContent").append("<img class='image is-100x100' src='" + randomDrink.strDrinkThumb + "'>");
-            $("#cocktailTitle").text(drinkTitle);
-        });
-
     });
 }
 // getCocktailDetails("11007");
@@ -141,6 +121,7 @@ function generateRandomCocktail() {
         $("#cocktailTitle").text(drinkTitle);
         $("#cocktailContent").empty();
         $("#cocktailContent").append("<img class='image is-100x100' src='" + response.drinks[0].strDrinkThumb + "' alt='" + response.drinks[0].strDrink + "'>");
+        drinkID = response.drinks[0].idDrink;
     });
 };
 
