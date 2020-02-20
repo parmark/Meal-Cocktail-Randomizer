@@ -11,5 +11,8 @@ Because TheMealDB and TheCocktailDB are both crowdsourced, oftentimes the inform
 and sometimes ingredients and/or measurements aren't displayed properly.
 There isn't much we can do about this on our end, so we apologise for any inconvienences this may cause.
 
+## Screenshot
+![alt text](https://raw.githubusercontent.com/parmark/Weather-Map/master/Assets/Weather-Map-screenshot.PNG "")
+
 ## Link
 [https://parmark.github.io/Meal-Cocktail-Randomizer/](https://parmark.github.io/Meal-Cocktail-Randomizer/)
