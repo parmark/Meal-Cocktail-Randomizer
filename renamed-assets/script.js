@@ -34,18 +34,7 @@ function generateMeal() {
         $("#mealContent").empty();
         $("#mealContent").append("<img class='is-100x100' src='" + mealImg + "'>");
         $("#mealTitle").text(mealTitle);
-        $("#btnMealNext").on("click", function (event) {
-            event.preventDefault();
-            mealsArray = response.meals;
-            randomMeal = mealsArray[Math.floor(Math.random() * mealsArray.length)];
-            mealTitle = randomMeal.strMeal;
-
-            $("#mealContent").empty();
-            $("#mealContent").append("<img class='is-100x100' src='" + randomMeal.strMealThumb + "'>");
-            $("#mealTitle").text(mealTitle);
-            checkMealOverflow(mealTitle.length);
-        });
-
+        checkMealOverflow(mealTitle.length);
     });
 };
 
@@ -109,23 +98,10 @@ function generateCocktail() {
         $("#cocktailContent").empty();
         $("#cocktailContent").append("<img class='image is-100x100' src='" + drinkImg + "'>");
         $("#cocktailTitle").text(drinkTitle);
-
-        $("#btnDrinkNext").on("click", function (event) {
-            event.preventDefault();
-            drinksArray = response.drinks;
-            randomDrink = drinksArray[Math.floor(Math.random() * drinksArray.length)];
-            drinkTitle = randomDrink.strDrink;
-
-            $("#cocktailContent").empty();
-            $("#cocktailContent").append("<img class='image is-100x100' src='" + randomDrink.strDrinkThumb + "'>");
-            $("#cocktailTitle").text(drinkTitle);
-            checkCocktailOverflow(drinkTitle.length)
-        });
-
+        checkCocktailOverflow(drinkTitle.length);
     });
 }
 
-// getDetails("11007", "drink");
 function getDetails(ID, type, cb) {
     if (type === "drink") {
         var Url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + ID;
@@ -207,14 +183,11 @@ $("#btnSubmit").on("click", function (event) {
     } else {
         generateMeal()
     };
-
-
     if (!$("#userLiquor").val()) {
         generateRandomCocktail();
     } else {
         generateCocktail()
     };
-
 });
 
 $("#btnMealSave").on("click", function (event) {
